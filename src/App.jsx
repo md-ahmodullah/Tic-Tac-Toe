@@ -31,7 +31,9 @@ function Board({ xIsNext, squares, onPlay }) {
   }
   return (
     <>
-      <div>{status}</div>
+      <div className="text-xl text-white text-center pb-3 font-bold">
+        {status}
+      </div>
       <div className="flex">
         <Square value={squares[0]} onSquareClick={() => handleClick(0)} />
         <Square value={squares[1]} onSquareClick={() => handleClick(1)} />
@@ -80,20 +82,23 @@ export default function Game() {
       description = `Go to start the game.`;
     }
     return (
-      <li key={move}>
+      <li
+        key={move}
+        className="bg-white p-2 rounded-sm mb-2 text-base font-bold text-blue-900"
+      >
         <button onClick={() => jumpTo(move)}>{description}</button>
       </li>
     );
   });
   return (
-    <>
-      <div>
+    <div className="flex justify-center gap-12 w-9/12 mx-auto my-40">
+      <div className="bg-blue-950 p-5 rounded-md">
         <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
       </div>
-      <div>
+      <div className="bg-green-600 p-5 rounded-md">
         <ol>{moves}</ol>
       </div>
-    </>
+    </div>
   );
 }
 
